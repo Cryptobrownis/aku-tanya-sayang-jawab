@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tanya Jawab Cinta ❤️</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%);
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+    }
+    
+    /* Animasi Partikel Hati di Background */
+    .bg-hearts {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      overflow: hidden; z-index: -1;
+    }
+    .heart {
+      position: absolute;
+      display: block;
+      width: 20px; height: 20px;
+      background: rgba(255, 75, 43, 0.25);
+      animation: bubble 12s linear infinite;
+      bottom: -150px;
+      border-radius: 50% 50% 0 0;
+      transform: rotate(-45deg);
+    }
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px; height: 20px;
+      background: rgba(255, 75, 43, 0.25);
+      border-radius: 50%;
+    }
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: 10px; top: 0; }
+
+    @keyframes bubble {
+      0% { transform: translateY(0) rotate(-45deg); opacity: 1; }
+      100% { transform: translateY(-1000px) rotate(-45deg); opacity: 0; }
+    }
+
+    /* Kartu Utama */
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+      position: relative;
+    }
+
+    .avatar {
+      width: 110px; height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ff4b2b;
+      margin-bottom: 15px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #ffe6e8;
+      color: #ff2a5f;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    h1 { font-family: 'Sacramento', cursive; font-size: 2.5rem; color: #ff2a5f; margin-bottom: 10px; }
+    .dialog-box {
+      background: #fdf2f4;
+      border-left: 4px solid #ff4b2b;
+      padding: 12px 15px;
+      border-radius: 8px;
+      color: #444;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    /* Pilihan Ganda Kanan-Kiri */
+    .btn-container { 
+      display: flex; 
+      justify-content: space-between; 
+      gap: 12px; 
+      margin-top: 15px;
+    }
+    
+    .btn-option {
+      flex: 1;
+      padding: 12px 10px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .btn-a { background: #ff4b2b; color: white; }
+    .btn-b { background: #ff758c; color: white; }
+    .btn-option:active { transform: scale(0.96); }
+
+    /* Pop-up Overlay & Modal */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .popup-box {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 350px;
+      width: 100%;
+      animation: zoomIn 0.3s ease-out;
+    }
+
+    .popup-box h3 { color: #ff2a5f; margin-bottom: 10px; font-size: 1.2rem; }
+    .popup-box p { font-size: 0.95rem; color: #555; line-height: 1.5; margin-bottom: 20px; }
+    .popup-btn { 
+      background: #ff4b2b; 
+      color: white; 
+      width: 100%; 
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    @keyframes zoomIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Partikel Hati -->
+  <div class="bg-hearts">
+    <div class="heart" style="left: 10%; width: 25px; height: 25px; animation-delay: 0s;"></div>
+    <div class="heart" style="left: 30%; animation-delay: 2s;"></div>
+    <div class="heart" style="left: 55%; width: 15px; height: 15px; animation-delay: 4s;"></div>
+    <div class="heart" style="left: 75%; animation-delay: 6s;"></div>
+    <div class="heart" style="left: 85%; width: 30px; height: 30px; animation-delay: 8s;"></div>
+  </div>
+
+  <!-- KARTU CERITA UTAMA -->
+  <div class="card" id="mainCard">
+    <img class="photo avatar" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" alt="Avatar Pasangan">
+    <br>
+    <span class="badge" id="stepBadge">Pertanyaan 1 dari 3</span>
+    <h1>Ngobrol Yuk! 💬</h1>
+    
+    <div class="dialog-box" id="dialogText">
+      "Sebutin 1 hal dari aku yang paling sering bikin kamu kangen saat kita lagi jauh?"
+    </div>
+
+    <!-- Pilihan Ganda Kanan-Kiri -->
+    <div class="btn-container">
+      <button class="btn-option btn-a" id="btnA" onclick="jawab('A')">Gombalannya 😜</button>
+      <button class="btn-option btn-b" id="btnB" onclick="jawab('B')">Perhatiannya 🥺</button>
+    </div>
+  </div>
+
+  <!-- POP-UP RESPON DINAMIS -->
+  <div id="popupOverlay" class="overlay">
+    <div class="popup-box">
+      <h3 id="popupTitle">Respon Cowok 👦</h3>
+      <p id="popupRespon">Isi respon akan berganti secara otomatis sesuai pilihanmu.</p>
+      <button class="popup-btn" onclick="lanjutPertanyaan()">Lanjut Pertanyaan 👉</button>
+    </div>
+  </div>
+
+  <!-- POP-UP AKHIR (PENUTUP) -->
+  <div id="popupAkhir" class="overlay">
+    <div class="popup-box">
+      <h3>Selesai! 🥰💖</h3>
+      <p>Makasih ya udah jawab semua pertanyaannya dengan jujur. Apapun pilihan kamu, aku bakal selalu sayang dan ada buat kamu terus! ❤️</p>
+      <button class="popup-btn" onclick="tutupAplikasi()">Kirim Peluk Erat! 🤗</button>
+    </div>
+  </div>
+
+  <script>
+    // DATA CERITA & RESPON BERBEDA UNTUK TIAP PILIHAN
+    const storyData = [
+      {
+        question: "1. 'Sebutin 1 hal dari aku yang paling sering bikin kamu kangen saat kita jauh?'",
+        optA: "Gombalan Garing 😜",
+        optB: "Perhatian Kecil 🥺",
+        respA: "Padahal aku tuh berusaha serius tau! Tapi gapapa deh, yang penting gombalan garing ini berhasil bikin kamu kangen terus 😉",
+        respB: "Aww manis banget! Aku bakal selalu perhatiin hal-hal kecil tentang kamu selamanya 🥺❤️"
+      },
+      {
+        question: "2. 'Kalau misal kita lagi ada salah paham/ngambek, kamu biasanya mau aku gimana?'",
+        optA: "Langsung Peluk 🤗",
+        optB: "Beliin Makanan 🧋",
+        respA: "Siap 86! Tanpa ba-bi-bu aku langsung meluncur peluk kamu erat-erat biar adem lagi 🤗❤️",
+        respB: "Paham banget deh! Boba + makanan favorit kamu langsung meluncur ke rumah 🛵💨"
+      },
+      {
+        question: "3. 'Pertanyaan terakhir... Seberapa besar rasa sayang kamu sama aku sekarang?'",
+        optA: "Seluas Samudra 🌊",
+        optB: "Setinggi Langit ☁️",
+        respA: "Wahhh samudra pun kalah dalam sama rasa cintaku ke kamu! Makasih ya udah sayang sama aku ❤️",
+        respB: "Terbang tinggi melintasi bintang-bintang! Makasih ya udah selalu ada buat aku ✨💕"
+      }
+    ];
+
+    let currentStep = 0;
+
+    function renderStep() {
+      const data = storyData[currentStep];
+      document.getElementById('stepBadge').innerText = `Pertanyaan ${currentStep + 1} dari ${storyData.length}`;
+      document.getElementById('dialogText').innerText = data.question;
+      document.getElementById('btnA').innerText = data.optA;
+      document.getElementById('btnB').innerText = data.optB;
+    }
+
+    function jawab(pilihan) {
+      const data = storyData[currentStep];
+      const popupOverlay = document.getElementById('popupOverlay');
+      const popupRespon = document.getElementById('popupRespon');
+
+      // Tampilkan respon berbeda berdasarkan tombol yang diklik
+      if (pilihan === 'A') {
+        popupRespon.innerText = data.respA;
+      } else {
+        popupRespon.innerText = data.respB;
+      }
+
+      popupOverlay.style.display = 'flex';
+    }
+
+    function lanjutPertanyaan() {
+      document.getElementById('popupOverlay').style.display = 'none';
+      currentStep++;
+
+      if (currentStep < storyData.length) {
+        renderStep();
+      } else {
+        // Tampilkan pop-up penutup jika cerita sudah selesai
+        document.getElementById('popupAkhir').style.display = 'flex';
+      }
+    }
+
+    function tutupAplikasi() {
+      document.getElementById('popupAkhir').style.display = 'none';
+      alert("I love you so much! ❤️ Simpan/Screenshot halaman ini ya!");
+    }
+
+    // Inisialisasi tampilan pertama
+    renderStep();
+  </script>
+</body>
+</html>
