@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tanya Jawab Cinta ❤️</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Sacramento&display=swap" rel="stylesheet">
+  <title>aku tanya, sayang jawab ❤️</title>
+  <!-- Import Font Poppins, Sacramento, dan Font Pixel (Press Start 2P) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Sacramento&family=Press+Start+2P&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -50,7 +51,7 @@
       100% { transform: translateY(-1000px) rotate(-45deg); opacity: 0; }
     }
 
-    /* Kartu Utama */
+    /* Kartu Utama & Pembuka */
     .card {
       background: rgba(255, 255, 255, 0.95);
       padding: 30px 20px;
@@ -81,6 +82,7 @@
     }
 
     h1 { font-family: 'Sacramento', cursive; font-size: 2.5rem; color: #ff2a5f; margin-bottom: 10px; }
+    
     .dialog-box {
       background: #fdf2f4;
       border-left: 4px solid #ff4b2b;
@@ -91,6 +93,40 @@
       line-height: 1.5;
       margin-bottom: 20px;
       text-align: left;
+    }
+
+    /* Tampilan Font Pixel Retro */
+    .pixel-box {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      animation: pulse 1.2s infinite alternate;
+    }
+
+    .pixel-name-container {
+      background: #1a1a2e;
+      border: 4px solid #ff2a5f;
+      border-radius: 15px;
+      padding: 20px 10px;
+      margin: 15px 0;
+      min-height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 5px 15px rgba(255, 42, 95, 0.3);
+    }
+
+    .pixel-font {
+      font-family: 'Press Start 2P', cursive;
+      color: #00ffcc;
+      font-size: 1rem;
+      line-height: 1.8;
+      text-shadow: 2px 2px #ff2a5f;
+      letter-spacing: 2px;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1); }
     }
 
     /* Pilihan Ganda Kanan-Kiri */
@@ -170,65 +206,150 @@
     <div class="heart" style="left: 85%; width: 30px; height: 30px; animation-delay: 8s;"></div>
   </div>
 
-  <!-- KARTU CERITA UTAMA -->
-  <div class="card" id="mainCard">
+  <!-- KARTU PEMBUKA (INTRO) -->
+  <div class="card" id="introCard">
+    <div id="introStep1">
+      <div class="pixel-box">💖</div>
+      <h1>Spesial Buat Kamu</h1>
+      <p style="color: #666; font-size: 0.95rem; margin-bottom: 20px;">Sebelum mulai ada kejutan mini seng...</p>
+      <button class="btn-option btn-a" style="width: 100%;" onclick="startPixelName()">pencet akuu uncchh 🎁</button>
+    </div>
+
+    <!-- Tampilan Animasi Pixel Nama -->
+    <div id="introStep2" style="display: none;">
+      <p style="font-size: 0.85rem; color: #ff2a5f; font-weight: 600;">Special Person:</p>
+      <div class="pixel-name-container">
+        <span id="pixelNameText" class="pixel-font"></span>
+      </div>
+      <p style="font-size: 0.8rem; color: #777; margin-bottom: 15px;" id="textSub">Sedang membentuk nama indahmu...</p>
+      <button id="btnStartQA" class="btn-option btn-a" style="width: 100%; display: none;" onclick="mulaiQA()">Q&A yuk seng 👉</button>
+    </div>
+  </div>
+
+  <!-- KARTU CERITA UTAMA (Sembunyi Awalnya) -->
+  <div class="card" id="mainCard" style="display: none;">
     <img class="photo avatar" src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=400" alt="Avatar Pasangan">
     <br>
-    <span class="badge" id="stepBadge">Pertanyaan 1 dari 3</span>
+    <span class="badge" id="stepBadge">Pertanyaan 1 dari 7</span>
     <h1>Ngobrol Yuk! 💬</h1>
     
     <div class="dialog-box" id="dialogText">
-      "Sebutin 1 hal dari aku yang paling sering bikin kamu kangen saat kita lagi jauh?"
+      Memuat pertanyaan...
     </div>
 
     <!-- Pilihan Ganda Kanan-Kiri -->
     <div class="btn-container">
-      <button class="btn-option btn-a" id="btnA" onclick="jawab('A')">Gombalannya 😜</button>
-      <button class="btn-option btn-b" id="btnB" onclick="jawab('B')">Perhatiannya 🥺</button>
+      <button class="btn-option btn-a" id="btnA" onclick="jawab('A')">Opsi A</button>
+      <button class="btn-option btn-b" id="btnB" onclick="jawab('B')">Opsi B</button>
     </div>
   </div>
 
   <!-- POP-UP RESPON DINAMIS -->
   <div id="popupOverlay" class="overlay">
     <div class="popup-box">
-      <h3 id="popupTitle">Respon Cowok 👦</h3>
+      <h3 id="popupTitle">Respon Spesial 👦❤️</h3>
       <p id="popupRespon">Isi respon akan berganti secara otomatis sesuai pilihanmu.</p>
-      <button class="popup-btn" onclick="lanjutPertanyaan()">Lanjut Pertanyaan 👉</button>
+      <button class="popup-btn" onclick="lanjutPertanyaan()">Lanjut sennggg 👉</button>
     </div>
   </div>
 
   <!-- POP-UP AKHIR (PENUTUP) -->
   <div id="popupAkhir" class="overlay">
     <div class="popup-box">
-      <h3>Selesai! 🥰💖</h3>
-      <p>Makasih ya udah jawab semua pertanyaannya dengan jujur. Apapun pilihan kamu, aku bakal selalu sayang dan ada buat kamu terus! ❤️</p>
-      <button class="popup-btn" onclick="tutupAplikasi()">Kirim Peluk Erat! 🤗</button>
+      <h3>hayoyooooo! 🥰💖🎉</h3>
+      <p>Makasih ya udah jawab semua pertanyaannya, kita usahakan buat bareng terus ya sengg ❤️</p>
+      <button class="popup-btn" onclick="tutupAplikasi()">Kirim PAP kamu cepet! 🤗</button>
     </div>
   </div>
 
   <script>
-    // DATA CERITA & RESPON BERBEDA UNTUK TIAP PILIHAN
+    // 1. EDIT NAMA PASANGAN DI SINI (Ganti dengan nama pacarmu)
+    const namaPasangan = "SAYANGKU ANNORA ❤️";
+
+    // ANIMASI KETIK PIXEL NAMA
+    function startPixelName() {
+      document.getElementById('introStep1').style.display = 'none';
+      document.getElementById('introStep2').style.display = 'block';
+
+      let i = 0;
+      const target = document.getElementById('pixelNameText');
+      target.innerText = "";
+      
+      const speed = 120; // Kecepatan mengetik nama (ms)
+      
+      function typeWriter() {
+        if (i < namaPasangan.length) {
+          target.innerText += namaPasangan.charAt(i);
+          i++;
+          setTimeout(typeWriter, speed);
+        } else {
+          // Ketika nama selesai diketik, tampilkan tombol Tanya Jawab
+          document.getElementById('textSub').innerText = "Namanya udah muncul! Yuk lanjut 👇";
+          setTimeout(() => {
+            const btn = document.getElementById('btnStartQA');
+            btn.style.display = 'block';
+          }, 300);
+        }
+      }
+      typeWriter();
+    }
+
+    function mulaiQA() {
+      document.getElementById('introCard').style.display = 'none';
+      document.getElementById('mainCard').style.display = 'block';
+      renderStep();
+    }
+
+    // 2. DAFTAR 7 PERTANYAAN & RESPON POP-UP BERBEDA
     const storyData = [
       {
-        question: "1. 'Sebutin 1 hal dari aku yang paling sering bikin kamu kangen saat kita jauh?'",
+        question: "1. 'Sebutin 1 hal dari aku yang paling sering bikin kamu kangen ?'",
         optA: "Gombalan Garing 😜",
         optB: "Perhatian Kecil 🥺",
         respA: "Padahal aku tuh berusaha serius tau! Tapi gapapa deh, yang penting gombalan garing ini berhasil bikin kamu kangen terus 😉",
         respB: "Aww manis banget! Aku bakal selalu perhatiin hal-hal kecil tentang kamu selamanya 🥺❤️"
       },
       {
-        question: "2. 'Kalau misal kita lagi ada salah paham/ngambek, kamu biasanya mau aku gimana?'",
+        question: "2. 'Kalau misal kita lagi ada salah paham / ngambek, kamu biasanya mau aku gimana?'",
         optA: "Langsung Peluk 🤗",
-        optB: "Beliin Makanan 🧋",
-        respA: "Siap 86! Tanpa ba-bi-bu aku langsung meluncur peluk kamu erat-erat biar adem lagi 🤗❤️",
-        respB: "Paham banget deh! Boba + makanan favorit kamu langsung meluncur ke rumah 🛵💨"
+        optB: "Beliin Makanan 😂",
+        respA: "Siap 86! Tanpa ba-bi-bu aku bakal langsung peluk sampe becekk senggg 🤗❤️",
+        respB: "Paham , cilok, sushi, ramen otw sengg 🛵💨"
       },
       {
-        question: "3. 'Pertanyaan terakhir... Seberapa besar rasa sayang kamu sama aku sekarang?'",
-        optA: "Seluas Samudra 🌊",
-        optB: "Setinggi Langit ☁️",
-        respA: "Wahhh samudra pun kalah dalam sama rasa cintaku ke kamu! Makasih ya udah sayang sama aku ❤️",
-        respB: "Terbang tinggi melintasi bintang-bintang! Makasih ya udah selalu ada buat aku ✨💕"
+        question: "3. 'Waktu VC hal apa yang buat kamu betah lama VC?'",
+        optA: "Ngobrol Santai 🗣️",
+        optB: "merhatiin kamu ☺️",
+        respA: "Sama! Denger kamu cerita seru apalg klo ceritanya gelisah banget 😂",
+        respB: "merhatiin sambil anu kann sayangg 👉👈 ❤️"
+      },
+      {
+        question: "4. 'Kalau kita ketemu nanti, kamu lebih milih ngapain aja?'",
+        optA: "Jalan keluar 🌅",
+        optB: "Quality Time 👩‍❤️‍💋‍👨",
+        respA: "jalan-jalan ke bantar gebang, trs jajan cilok ya seng 😂",
+        respB: "deeptalk, sambil cuddle yang lamaaaa sama kmu, terus bobo sambil di kelonin ❤️"
+      },
+      {
+        question: "5. 'Menurut kamu, ekspresi aku yang mana yang paling bikin kamu gemes?'",
+        optA: "Pas Lagi Manja 🥺",
+        optB: "Pas Lagi iseng 😁",
+        respA: "Hehehe, emang aku semanja itu senggg! 👉👈",
+        respB: "wkwkwkwkwk, seru tau yangg iseng tuh! 😂"
+      },
+      {
+        question: "6. 'Kalau kamu lagi capek atau pusing kerjaan/tugas, hal apa yang paling bikin tenang?'",
+        optA: "Pop-up Chat Kamu 📱",
+        optB: "Videocall kamu",
+        respA: "Ting! notif WA yg kirim stiker wkwkwkwkw ⚡❤️",
+        respB: "chat aja, bilang pura-pura kepencet vc nanti ku vc balik ! 📞💕"
+      },
+      {
+        question: "7. 'Pertanyaan terakhir... Seberapa besar rasa sayang kamu sama aku sekarang?'",
+        optA: "biasa aja",
+        optB: "sayang banget 🥺",
+        respA: "emang plenger bet plenger wkwkwkwk",
+        respB: "makasih sayang, aku jg sayang sampe ada aja idenya bikin kmu cengar cengir tuh krn gamau kmu sedih ❤️💕"
       }
     ];
 
@@ -247,7 +368,6 @@
       const popupOverlay = document.getElementById('popupOverlay');
       const popupRespon = document.getElementById('popupRespon');
 
-      // Tampilkan respon berbeda berdasarkan tombol yang diklik
       if (pilihan === 'A') {
         popupRespon.innerText = data.respA;
       } else {
@@ -264,18 +384,14 @@
       if (currentStep < storyData.length) {
         renderStep();
       } else {
-        // Tampilkan pop-up penutup jika cerita sudah selesai
         document.getElementById('popupAkhir').style.display = 'flex';
       }
     }
 
     function tutupAplikasi() {
       document.getElementById('popupAkhir').style.display = 'none';
-      alert("I love you so much! ❤️ Simpan/Screenshot halaman ini ya!");
+      alert("I love you so much! ❤️ klo dah liat kirim PAP eaaa!");
     }
-
-    // Inisialisasi tampilan pertama
-    renderStep();
   </script>
 </body>
 </html>
